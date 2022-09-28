@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab - youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -8,10 +7,92 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+
+
+  <script>
+    function validate() {
+                var name =
+                    document.forms.RegForm.Name.value;
+                var username = 
+                    document.forms.RegForm.Username.value;
+                var email =
+                    document.forms.RegForm.EMail.value;
+                var phone =
+                    document.forms.RegForm.Telephone.value;
+                var cgpa =
+                    document.forms.RegForm.cgpa.value;
+
+                var password =
+                    document.forms.RegForm.Password.value;
+                var specs = 
+                    document.forms.RegForm.specs.value;
+                var resume = 
+                    document.forms.RegForm.resume.value;
+                
+
+                var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;  //Javascript reGex for Email Validation.
+                var regPhone=/^\d{10}$/;
+                // var regCGPA=/^\d{3}$/; 
+                var regCGPA=/^(10|\d)(\.\d{1,2})?$/;                                    // Javascript reGex for Phone Number validation.
+                var regName = /\d+$/g;         
+                var flag = true;
+                //var regURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&/ /=]*)      // Javascript reGex for Name validation
+ 
+                if (name == "" || regName.test(name)) {
+                    window.alert("Please enter your name properly.");
+                    // name.focus();
+                    window.location.href = "index.html";
+                    flag = false;
+                }
+ 
+                if (username == "") {
+                    window.alert("Please enter your username.");
+                    // address.focus();
+                    window.location.href = "index.html";
+                    flag = false;
+                }
+                 
+                if (email == "" || !regEmail.test(email)) {
+                    window.alert("Please enter a valid e-mail address.");
+                    // email.focus();
+                    window.location.href = "index.html";
+                    flag = false;
+                }
+                  
+                if (password.length < 6) {
+                    window.alert("Please enter a longer password (more than 6 characters) ");
+                    // password.focus();
+                    window.location.href = "index.html";
+                    flag = false;
+                }
+
+                if (phone == "" || !regPhone.test(phone)) {
+                    window.alert("Please enter valid phone number.");
+                    // phone.focus();
+                    window.location.href = "index.html";
+                    flag = false;
+                }
+
+                if (cgpa == "" || !regCGPA.test(cgpa)) {
+                    window.alert("Please enter valid CGPA");
+                    // cgpa.focus();
+                    window.location = "index.html";
+                    flag = false;
+                }
+                if(flag == true)
+                {
+                  window.location = "thanks.html";
+                }
+                
+            }
+  </script>
+
+
+
   <div class="container">
     <div class="title">Basic Details</div>
     <div class="content">
-      <form name = "RegForm" onsubmit = "validate()" action="thanks.html">
+      <form name = "RegForm" onsubmit = "validate(); return false">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
@@ -67,86 +148,13 @@
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Register">
+          <input type="submit" value="Submit">
         </div>
       </form>
     </div>
   </div>
 
-  <script>
-    function validate() {
-                var name =
-                    document.forms.RegForm.Name.value;
-                var username = 
-                    document.forms.RegForm.Username.value;
-                var email =
-                    document.forms.RegForm.EMail.value;
-                var phone =
-                    document.forms.RegForm.Telephone.value;
-                var cgpa =
-                    document.forms.RegForm.cgpa.value;
-
-                var password =
-                    document.forms.RegForm.Password.value;
-                var specs = 
-                    document.forms.RegForm.specs.value;
-                var resume = 
-                    document.forms.RegForm.resume.value;
-                
-
-                var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;  //Javascript reGex for Email Validation.
-                var regPhone=/^\d{10}$/;
-                // var regCGPA=/^\d{3}$/; 
-                var regCGPA=/^(10|\d)(\.\d{1,2})?$/;                                    // Javascript reGex for Phone Number validation.
-                var regName = /\d+$/g;         
-                
-                //var regURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&/ /=]*)      // Javascript reGex for Name validation
- 
-                if (name == "" || regName.test(name)) {
-                    window.alert("Please enter your name properly.");
-                    name.focus();
-                    return "index.html";
-                }
- 
-                if (username == "") {
-                    window.alert("Please enter your address.");
-                    address.focus();
-                    return "index.html";
-                }
-                 
-                if (email == "" || !regEmail.test(email)) {
-                    window.alert("Please enter a valid e-mail address.");
-                    email.focus();
-                    return "index.html";
-                }
-                  
-                if (password.length < 6) {
-                    window.alert("Please enter a longer password (more than 6 characters) ");
-                    password.focus();
-                    return "index.html";
-                }
- 
-                if(password.length <6){
-                    window.alert("Password should be atleast 6 character long");
-                    password.focus();
-                    return "index.html";
- 
-                }
-                if (phone == "" || !regPhone.test(phone)) {
-                    window.alert("Please enter valid phone number.");
-                    phone.focus();
-                    return "index.html";
-                }
-
-                if (cgpa == "" || !regCGPA.test(cgpa)) {
-                    window.alert("Please enter valid CGPA");
-                    phone.focus();
-                    return "index.html";
-                }
-                
-                return "thanks.html";
-            }
-  </script>
+  
 
 </body>
 </html>
